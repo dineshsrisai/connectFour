@@ -10,6 +10,11 @@ const int R = 6, C = 7;
 const char EMPTY = '.', P1 = 'X', P2 = 'O';
 char b[R][C];
 
+void undo(int r, int c)
+{
+    b[r][r] = EMPTY;
+}
+
 bool draw()
 {
     for (int i = 0; i < C; i++)
@@ -190,7 +195,7 @@ int main()
         }
     }
 
-    cout << "Connect Four\n 1)Two Players\n 2)Vs Computer\n Choice : ";
+    cout << "Connect Four\n1)Two Players\n2)Vs Computer\nChoice : ";
     int choice;
     cin >> choice;
     char p = P1;
