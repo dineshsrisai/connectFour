@@ -10,6 +10,35 @@ const int R = 6, C = 7;
 const char EMPTY = '.', P1 = 'X', P2 = 'O';
 char b[R][C];
 
+bool draw()
+{
+    for (int i = 0; i < C; i++)
+    {
+        if (b[0][i] == EMPTY)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int drop(int col, char p)
+{
+    if (col < 0 || col >= C || b[0][col] != EMPTY)
+    {
+        return -1;
+    }
+    for (int i = R - 1; i >= 0; i--)
+    {
+        if (b[i][col] == EMPTY)
+        {
+            b[i][col] = p;
+            return i;
+        }
+    }
+    return -1;
+}
+
 bool win(int r, int c, char p)
 {
     int count;
