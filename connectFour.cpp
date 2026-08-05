@@ -34,25 +34,23 @@ void printBoard()
         cout << BLUE << "|\n"
              << RESET;
     }
-    cout << BLUE << "+";
-    for (int j = 0; j < C * 2 + 1; j++)
-    {
-        cout << '-';
-    }
-    cout << "+\n"
-         << RESET << " ";
+    cout << "  ";
     for (int j = 0; j < C; j++)
     {
         cout << j + 1 << " ";
     }
     cout << "\n\n";
 }
+
 int main()
 {
     for (int i = 0; i < R; i++)
+    {
         for (int j = 0; j < C; j++)
+        {
             b[i][j] = EMPTY;
-
+        }
+    }
     printBoard();
     return 0;
 }
