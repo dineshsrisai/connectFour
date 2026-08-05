@@ -10,6 +10,38 @@ const int R = 6, C = 7;
 const char EMPTY = '.', P1 = 'X', P2 = 'O';
 char b[R][C];
 
+bool win(int r, int c, char p)
+{
+    int count;
+    count = 1;
+    for (int i = c - 1; i >= 0 && b[r][i] == p; i--)
+    {
+        count++;
+    }
+    for (int i = c + 1; i < C && b[r][i] == p; i++)
+    {
+        count++;
+    }
+    if (count >= 4)
+    {
+        return true;
+    }
+
+    count = 1;
+    for (int i = r - 1; i >= 0 && b[i][c] == p; i--)
+    {
+        count++;
+    }
+    for (int i = r + 1; i < R && b[i][c] == p; i++)
+    {
+        count++;
+    }
+    if (count >= 4)
+    {
+        return true;
+    }
+}
+
 void printBoard()
 {
     cout << "\n";
@@ -51,6 +83,12 @@ int main()
             b[i][j] = EMPTY;
         }
     }
+
+    cout << "Connect Four\n 1)Two Players\n 2) Vs Computer\n Choice : ";
+    int choice;
+    cin >> choice;
+    char p = P1;
+
     printBoard();
     return 0;
 }
