@@ -101,6 +101,53 @@ bool win(int r, int c, char p)
     return false;
 }
 
+bool tryMove(int col, char p)
+{
+    if (col < 0 || col >= C)
+    {
+        return false;
+    }
+    for (int i = R - 1; i >= 0; i--)
+    {
+        if (b[i][col] == EMPTY)
+        {
+            b[i][col] = p;
+            bool ok = win(i, col, p);
+            b[i][col] = EMPTY;
+            return ok;
+        }
+    }
+    return false;
+}
+
+int aiMove()
+{
+    for (int c = 0; c < C; c++)
+    {
+        if (b[0][c] == EMPTY && tryMove(c, P2))
+        {
+            return c;
+        }
+    }
+    for (int c = 0; c < C; c++)
+    {
+        if (b[0][c] == EMPTY && tryMove(c, P1))
+        {
+            return c;
+        }
+    }
+
+    vector<int> prefCenter = {3, 2, 4, 1, 5, 0, 6};
+    for (int c : prefCenter)
+    {
+        if (b[0][c] == EMPTY)
+        {
+            return c;
+        }
+    }
+    return -1;
+}
+
 void printBoard()
 {
     cout << "\n";
@@ -143,11 +190,78 @@ int main()
         }
     }
 
-    cout << "Connect Four\n 1)Two Players\n 2) Vs Computer\n Choice : ";
+    cout << "Connect Four\n 1)Two Players\n 2)Vs Computer\n Choice : ";
     int choice;
     cin >> choice;
     char p = P1;
+    while (1)
+    {
+        printBoard();
+        int c;
+        if (choice == 1)
+        {
+            if (p == P1)
+                cout << "Player 1, enter column (1-7): ";
+            else
+                cout << "Player 2, enter column (1-7): ";
 
-    printBoard();
+            cin >> c;
+            c--;
+        }
+        else
+        {
+            if (p == P1)
+            {
+                cout << "Enter column (1-7): ";
+                cin >> c;
+                c--;
+            }
+            else
+            {
+                c = aiMove();
+                cout << "Computer chose column " << c + 1 << endl;
+            }
+        }
+
+        int r = drop(c, p);
+        if (r == -1)
+        {
+            cout << "Invalid move\n";
+            continue;
+        }
+        if (win(r, c, p))
+        {
+            printBoard();
+            if (choice == 1)
+            {
+                if (p == P1)
+                    cout << "Player 1 wins!\n";
+                else
+                    cout << "Player 2 wins!\n";
+            }
+            else
+            {
+                if (p == P1)
+                    cout << "You win!\n";
+                else
+                    cout << "Computer wins!\n";
+            }
+            break;
+        }
+        if (draw())
+        {
+            printBoard();
+            cout << "DRAW\n";
+            break;
+        }
+        if (p == P1)
+        {
+            p = P2;
+        }
+        else
+        {
+            p = P1;
+        }
+    }
     return 0;
 }
