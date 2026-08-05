@@ -12,7 +12,7 @@ char b[R][C];
 
 void undo(int r, int c)
 {
-    b[r][r] = EMPTY;
+    b[r][c] = EMPTY;
 }
 
 bool draw()

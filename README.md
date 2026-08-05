@@ -4,24 +4,23 @@ A terminal-based implementation of the classic **Connect Four** game built using
 
 ## Features
 
-* Two game modes:
+- Two game modes:
+  - Player vs Player
+  - Player vs Computer
 
-  * Player vs Player
-  * Player vs Computer
-* Gravity-based disc placement
-* Win detection (horizontal, vertical, and diagonal)
-* Draw detection
-* Colored terminal interface
-* AI that:
-
-  * Plays winning moves
-  * Blocks opponent's winning moves
-  * Prefers center columns
+- Gravity-based disc placement
+- Win detection (horizontal, vertical, and diagonal)
+- Draw detection
+- Colored terminal interface
+- AI that:
+  - Plays winning moves
+  - Blocks opponent's winning moves
+  - Prefers center columns
 
 ## Technologies
 
-* C++
-* Standard Template Library (STL)
+- C++
+- Standard Template Library (STL)
 
 ## Run
 
@@ -29,11 +28,13 @@ A terminal-based implementation of the classic **Connect Four** game built using
 g++ connect_four.cpp -o connect_four
 ./connect_four
 ```
+
 Gameplay
 Connect Four
-1) Two Players
-2) Vs Computer
-Choice:
+
+1. Two Players
+2. Vs Computer
+   Choice:
 
 Players choose a column (1–7), and the disc automatically falls to the lowest available position. The first player to connect four consecutive discs horizontally, vertically, or diagonally wins.
 
