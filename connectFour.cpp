@@ -14,6 +14,7 @@ bool win(int r, int c, char p)
 {
     int count;
     count = 1;
+
     for (int i = c - 1; i >= 0 && b[r][i] == p; i--)
     {
         count++;
@@ -40,6 +41,35 @@ bool win(int r, int c, char p)
     {
         return true;
     }
+
+    count = 1;
+    for (int i = r - 1, j = c - 1; i >= 0 && j >= 0 && b[i][j] == p; i--, j--)
+    {
+        count++;
+    }
+    for (int i = r + 1, j = c + 1; i < R && j < C && b[i][j] == p; i++, j++)
+    {
+        count++;
+    }
+    if (count >= 4)
+    {
+        return true;
+    }
+
+    count = 1;
+    for (int i = r + 1, j = c - 1; i < R && j >= 0 && b[i][j] == p; i++, j--)
+    {
+        count++;
+    }
+    for (int i = r - 1, j = c + 1; i >= 0 && j < C && b[i][j] == p; i--, j++)
+    {
+        count++;
+    }
+    if (count >= 4)
+    {
+        return true;
+    }
+    return false;
 }
 
 void printBoard()
