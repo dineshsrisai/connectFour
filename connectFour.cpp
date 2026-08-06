@@ -132,27 +132,44 @@ int evaluateWindow(char window[4])
     for (int i = 0; i < 4; i++)
     {
         if (window[i] == P2)
+        {
             ai++;
+        }
         else if (window[i] == P1)
+        {
             player++;
+        }
         else
+        {
             empty++;
+        }
     }
 
     if (ai == 4)
+    {
         return 1000;
+    }
     if (ai == 3 && empty == 1)
+    {
         return 50;
+    }
     if (ai == 2 && empty == 2)
+    {
         return 10;
+    }
 
     if (player == 4)
+    {
         return -1000;
+    }
     if (player == 3 && empty == 1)
+    {
         return -80;
+    }
     if (player == 2 && empty == 2)
+    {
         return -10;
-
+    }
     return 0;
 }
 
@@ -163,17 +180,22 @@ int evaluate()
     for (int r = 0; r < R; r++)
     {
         if (b[r][C / 2] == P2)
+        {
             score += 6;
+        }
         else if (b[r][C / 2] == P1)
+        {
             score -= 6;
+        }
     }
     for (int r = 0; r < R; r++)
     {
         for (int c = 0; c <= C - 4; c++)
         {
             for (int i = 0; i < 4; i++)
+            {
                 window[i] = b[r][c + i];
-
+            }
             score += evaluateWindow(window);
         }
     }
@@ -182,8 +204,9 @@ int evaluate()
         for (int r = 0; r <= R - 4; r++)
         {
             for (int i = 0; i < 4; i++)
+            {
                 window[i] = b[r + i][c];
-
+            }
             score += evaluateWindow(window);
         }
     }
@@ -192,7 +215,9 @@ int evaluate()
         for (int c = 0; c <= C - 4; c++)
         {
             for (int i = 0; i < 4; i++)
+            {
                 window[i] = b[r + i][c + i];
+            }
 
             score += evaluateWindow(window);
         }
@@ -202,8 +227,9 @@ int evaluate()
         for (int c = 0; c <= C - 4; c++)
         {
             for (int i = 0; i < 4; i++)
+            {
                 window[i] = b[r - i][c + i];
-
+            }
             score += evaluateWindow(window);
         }
     }
@@ -265,12 +291,16 @@ int aiMove()
     for (int c = 0; c < C; c++)
     {
         if (tryMove(c, P2))
+        {
             return c;
+        }
     }
     for (int c = 0; c < C; c++)
     {
         if (tryMove(c, P1))
+        {
             return c;
+        }
     }
 
     int bestMove = -1;
@@ -293,7 +323,6 @@ int aiMove()
             bestMove = c;
         }
     }
-
     return bestMove;
 }
 
