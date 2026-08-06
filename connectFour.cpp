@@ -125,32 +125,91 @@ bool tryMove(int col, char p)
     return false;
 }
 
+int evaluate()
+{
+    return 0;
+}
+
+int miniMax(int depth, bool maximizing_player)
+{
+    if (depth == 0 || draw())
+    {
+        return evaluate();
+    }
+    if (maximizing_player)
+    {
+        int maxEval = INT_MIN;
+        for (int c = 0; c < C; c++)
+        {
+            int r = drop(c, P2);
+            if (r == -1)
+            {
+                continue;
+            }
+            if (win(r, c, P2))
+            {
+                undo(r, c);
+                return 100000 + depth;
+            }
+            int eval = miniMax(depth - 1, false);
+            undo(r, c);
+            maxEval = max(maxEval, eval);
+        }
+        return maxEval;
+    }
+    else
+    {
+        int minEval = INT_MAX;
+        for (int c = 0; c < C; c++)
+        {
+            int r = drop(c, P1);
+            if (r == -1)
+            {
+                continue;
+            }
+            if (win(r, c, P1))
+            {
+                undo(r, c);
+                return -100000 - depth;
+            }
+            int eval = miniMax(depth - 1, true);
+            undo(r, c);
+            minEval = min(minEval, eval);
+        }
+        return minEval;
+    }
+}
+
 int aiMove()
 {
+    int bestMove = -1;
+    int bestScore = INT_MIN;
     for (int c = 0; c < C; c++)
     {
-        if (b[0][c] == EMPTY && tryMove(c, P2))
-        {
-            return c;
-        }
-    }
-    for (int c = 0; c < C; c++)
-    {
-        if (b[0][c] == EMPTY && tryMove(c, P1))
-        {
-            return c;
-        }
-    }
+        int r = drop(c, P2);
 
-    vector<int> prefCenter = {3, 2, 4, 1, 5, 0, 6};
-    for (int c : prefCenter)
-    {
-        if (b[0][c] == EMPTY)
+        if (r == -1)
         {
-            return c;
+            continue;
+        }
+
+        int score;
+        if (win(r, c, P2))
+        {
+            score = 100000;
+        }
+        else
+        {
+            score = miniMax(5, false);
+        }
+        undo(r, c);
+        if (score > bestScore)
+        {
+            bestScore = score;
+            bestMove = c;
         }
     }
-    return -1;
+    return bestMove;
 }
 
 void printBoard()
