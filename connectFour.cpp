@@ -311,7 +311,9 @@ int aiMove()
         int r = drop(c, P2);
 
         if (r == -1)
+        {
             continue;
+        }
 
         int score = miniMax(5, false);
 
@@ -379,9 +381,13 @@ int main()
         if (choice == 1)
         {
             if (p == P1)
+            {
                 cout << "Player 1, enter column (1-7): ";
+            }
             else
+            {
                 cout << "Player 2, enter column (1-7): ";
+            }
 
             cin >> c;
             c--;
@@ -413,16 +419,24 @@ int main()
             if (choice == 1)
             {
                 if (p == P1)
+                {
                     cout << "Player 1 wins!\n";
+                }
                 else
+                {
                     cout << "Player 2 wins!\n";
+                }
             }
             else
             {
                 if (p == P1)
+                {
                     cout << "You win!\n";
+                }
                 else
+                {
                     cout << "Computer wins!\n";
+                }
             }
             break;
         }
