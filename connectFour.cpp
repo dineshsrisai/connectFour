@@ -1,11 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const string RED = "\033[1;31m";
-const string YELLOW = "\033[1;33m";
-const string BLUE = "\033[1;34m";
-const string RESET = "\033[0m";
-
 const int R = 6, C = 7;
 const char EMPTY = '.', P1 = 'X', P2 = 'O';
 char b[R][C];
@@ -333,24 +328,12 @@ void printBoard()
     cout << "\n";
     for (int i = 0; i < R; i++)
     {
-        cout << BLUE << "| " << RESET;
+        cout << "| ";
         for (int j = 0; j < C; j++)
         {
-            if (b[i][j] == P1)
-            {
-                cout << RED << b[i][j] << RESET << " ";
-            }
-            else if (b[i][j] == P2)
-            {
-                cout << YELLOW << b[i][j] << RESET << " ";
-            }
-            else
-            {
-                cout << b[i][j] << " ";
-            }
+            cout << b[i][j] << " ";
         }
-        cout << BLUE << "|\n"
-             << RESET;
+        cout << "|\n";
     }
     cout << "  ";
     for (int j = 0; j < C; j++)
@@ -370,41 +353,22 @@ int main()
         }
     }
 
-    cout << "Connect Four\n1)Two Players\n2)Vs Computer\nChoice : ";
-    int choice;
-    cin >> choice;
+    cout << "Connect Four - You vs Computer\n";
     char p = P1;
     while (1)
     {
         printBoard();
         int c;
-        if (choice == 1)
+        if (p == P1)
         {
-            if (p == P1)
-            {
-                cout << "Player 1, enter column (1-7): ";
-            }
-            else
-            {
-                cout << "Player 2, enter column (1-7): ";
-            }
-
+            cout << "Enter column (1-7): ";
             cin >> c;
             c--;
         }
         else
         {
-            if (p == P1)
-            {
-                cout << "Enter column (1-7): ";
-                cin >> c;
-                c--;
-            }
-            else
-            {
-                c = aiMove();
-                cout << "Computer chose column " << c + 1 << endl;
-            }
+            c = aiMove();
+            cout << "Computer chose column " << c + 1 << endl;
         }
 
         int r = drop(c, p);
@@ -416,27 +380,13 @@ int main()
         if (win(r, c, p))
         {
             printBoard();
-            if (choice == 1)
+            if (p == P1)
             {
-                if (p == P1)
-                {
-                    cout << "Player 1 wins!\n";
-                }
-                else
-                {
-                    cout << "Player 2 wins!\n";
-                }
+                cout << "You win!\n";
             }
             else
             {
-                if (p == P1)
-                {
-                    cout << "You win!\n";
-                }
-                else
-                {
-                    cout << "Computer wins!\n";
-                }
+                cout << "Computer wins!\n";
             }
             break;
         }

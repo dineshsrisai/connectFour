@@ -1,12 +1,10 @@
 # Connect Four
 
-A terminal-based implementation of the classic **Connect Four** game built using **C++** featuring both **Player vs Player** and **Player vs Computer** modes. The computer opponent uses the **Minimax algorithm** with a heuristic evaluation function to make strategic decisions.
+A terminal-based implementation of the classic **Connect Four** game built using **C++**, played as **Player vs Computer**. The computer opponent uses the **Minimax algorithm** with a heuristic evaluation function to make strategic decisions.
 
 ## Features
 
-- Two game modes:
-  - Player vs Player
-  - Player vs Computer
+- Player vs Computer gameplay
 
 - Gravity-based disc placement
 
@@ -16,8 +14,6 @@ A terminal-based implementation of the classic **Connect Four** game built using
   - Diagonal
 
 - Draw detection
-
-- Colored terminal interface using ANSI escape codes
 
 ### AI Features
 
@@ -80,11 +76,8 @@ g++ connect_four.cpp -o connect_four
 ## Gameplay
 
 ```text
-Connect Four
-
-1. Two Players
-2. Vs Computer
-Choice:
+Connect Four - You vs Computer
+Enter column (1-7):
 ```
 
 Players choose a column (1–7). The disc automatically falls to the lowest available position due to gravity. The first player to connect four consecutive discs horizontally, vertically, or diagonally wins the game.
