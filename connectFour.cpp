@@ -353,7 +353,7 @@ int main()
         }
     }
 
-    cout << "Connect Four - You vs Computer\n";
+    cout << "Connect Four\n";
     char p = P1;
     while (1)
     {
