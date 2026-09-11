@@ -1,91 +1,55 @@
-# Connect Four
+Connect Four (C++)
 
-A terminal-based implementation of the classic **Connect Four** game built using **C++**, played as **Player vs Computer**. The computer opponent uses the **Minimax algorithm** with a heuristic evaluation function to make strategic decisions.
+A terminal Connect Four game I built in C++ — play against a computer opponent that actually thinks ahead using minimax with alpha-beta pruning, not just random or greedy moves.
 
-## Features
+What it does
+Standard Connect Four rules, played in the terminal
+Discs drop with gravity, like the real game
+Checks for wins in all four directions (horizontal, vertical, both diagonals)
+Catches draws when the board fills up
+How the AI works
 
-- Player vs Computer gameplay
+I didn't want the computer to just grab the first winning-looking move, so it runs a minimax search (depth 6, alpha-beta pruned to keep it fast) over future board states.
 
-- Gravity-based disc placement
+Before it even bothers with the search though, it checks two things directly:
 
-- Win detection in all directions:
-  - Horizontal
-  - Vertical
-  - Diagonal
+Can I win right now? If yes, take it.
+Is the opponent one move from winning? If yes, block it.
 
-- Draw detection
+Only after that does it fall back to scoring positions with a heuristic — basically scanning every possible 4-in-a-row "window" on the board and scoring it based on how many of my pieces vs. the opponent's are in it, plus a small bonus for center-column control since that opens up more winning lines.
 
-### AI Features
+Project layout
+connect4/
+├── CMakeLists.txt
+├── include/
+│   ├── board.h
+│   └── ai.h
+└── src/
+    ├── main.cpp
+    ├── board.cpp
+    └── ai.cpp
 
-- **Minimax search** for move selection
-- **Heuristic board evaluation** based on all possible 4-cell windows
-- Detects and plays **immediate winning moves**
-- Detects and blocks the opponent's **immediate winning moves**
-- Prefers **center-column control** for stronger board positions
-- Scores board states by evaluating:
-  - Four-in-a-row
-  - Three-in-a-row with an open space
-  - Two-in-a-row with open spaces
-  - Opponent threats
 
-## AI Strategy
+Kept it split into three pieces:
 
-The computer chooses its move using the following priority:
+board — the grid itself, dropping pieces, undoing moves, win/draw checks
+ai — the minimax logic and evaluation function
+main — the actual game loop tying it together
+Building
+cmake -B build
+cmake --build build
+./build/connect4
 
-1. Play an immediate winning move.
-2. Block the opponent's immediate winning move.
-3. Evaluate future board positions using the **Minimax algorithm**.
-4. Score each board using a heuristic evaluation function and select the highest-scoring move.
-
-## Technologies
-
-- C++
-- Standard Template Library (STL)
-
-## Project Structure
-
-```text
-connect_four.cpp
-```
-
-### Main Components
-
-- **Board Management**
-  - Disc placement
-  - Undo moves
-  - Draw detection
-
-- **Game Logic**
-  - Win detection
-  - Player turns
-  - Input validation
-
-- **Artificial Intelligence**
-  - Minimax search
-  - Heuristic evaluation
-  - Immediate win/block detection
-  - Center-column preference
-
-## Build & Run
-
-```bash
-g++ connect_four.cpp -o connect_four
-./connect_four
-```
-
-## Gameplay
-
-```text
-Connect Four - You vs Computer
+Playing
+Connect Four
 Enter column (1-7):
-```
 
-Players choose a column (1–7). The disc automatically falls to the lowest available position due to gravity. The first player to connect four consecutive discs horizontally, vertically, or diagonally wins the game.
 
-## Future Improvements
+Just type a column number 1-7 and your disc drops to the lowest open spot. First to connect four in a row wins.
 
-- Alpha-Beta Pruning
+Things I'd still like to add
+Adjustable difficulty (right now the search depth is hardcoded at 6)
+Maybe a GUI at some point instead of terminal-only
+Author
 
-## Author
-
-**Dinesh**
+Dinesh
