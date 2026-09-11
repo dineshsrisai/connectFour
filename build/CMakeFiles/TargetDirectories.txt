@@ -1,5 +1,0 @@
-C:/Users/dines/OneDrive/Desktop/connectFour/build/CMakeFiles/connectFour.dir
-C:/Users/dines/OneDrive/Desktop/connectFour/build/CMakeFiles/edit_cache.dir
-C:/Users/dines/OneDrive/Desktop/connectFour/build/CMakeFiles/rebuild_cache.dir
-C:/Users/dines/OneDrive/Desktop/connectFour/build/CMakeFiles/connectFour_autogen_timestamp_deps.dir
-C:/Users/dines/OneDrive/Desktop/connectFour/build/CMakeFiles/connectFour_autogen.dir

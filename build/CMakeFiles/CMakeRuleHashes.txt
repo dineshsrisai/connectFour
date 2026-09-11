@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-b2e07daf429baf2ec1e3792188fac64d CMakeFiles/connectFour_autogen
-4a6d4f07615d9acae9d52ef584ba145d connectFour_autogen/timestamp
