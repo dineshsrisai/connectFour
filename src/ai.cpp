@@ -59,6 +59,7 @@ int evaluateBoard()
     int score = 0;
     char window[4];
 
+    //center column
     for (int r = 0; r < ROWS; r++)
     {
         if (grid[r][COLS / 2] == 'O')
@@ -71,6 +72,7 @@ int evaluateBoard()
         }
     }
 
+    // horizontal
     for (int r = 0; r < ROWS; r++)
     {
         for (int c = 0; c <= COLS - 4; c++)
@@ -82,7 +84,8 @@ int evaluateBoard()
             score = score + evaluateWindow(window);
         }
     }
-
+    
+    // vertical
     for (int c = 0; c < COLS; c++)
     {
         for (int r = 0; r <= ROWS - 4; r++)
@@ -94,7 +97,7 @@ int evaluateBoard()
             score = score + evaluateWindow(window);
         }
     }
-
+    // diagonal
     for (int r = 0; r <= ROWS - 4; r++)
     {
         for (int c = 0; c <= COLS - 4; c++)
@@ -106,7 +109,7 @@ int evaluateBoard()
             score = score + evaluateWindow(window);
         }
     }
-
+    // diagonal
     for (int r = 3; r < ROWS; r++)
     {
         for (int c = 0; c <= COLS - 4; c++)
