@@ -1,0 +1,96 @@
+Depth: 1
+
+Pure MiniMax
+
+Best move: col 4 Eval: 6 Search time: 0 ms.
+Num nodes: 7 num cutoffs: 0
+
+Alpha-beta
+
+Best move: col 4 Eval: 6 Search time: 0 ms.
+Num nodes: 7 num cutoffs: 0
+
+Depth: 2
+
+Pure MiniMax
+
+Best move: col 4 Eval: 0 Search time: 0 ms.
+Num nodes: 56 num cutoffs: 0
+
+Alpha-beta
+
+Best move: col 4 Eval: 0 Search time: 0 ms.
+Num nodes: 32 num cutoffs: 5
+
+Depth: 3
+
+Pure MiniMax
+
+Best move: col 4 Eval: 22 Search time: 0 ms.
+Num nodes: 399 num cutoffs: 0
+
+Alpha-beta
+
+Best move: col 4 Eval: 22 Search time: 0 ms.
+Num nodes: 192 num cutoffs: 18
+
+Depth: 4
+
+Pure MiniMax
+
+Best move: col 3 Eval: 0 Search time: 7 ms.
+Num nodes: 2800 num cutoffs: 0
+
+Alpha-beta
+
+Best move: col 3 Eval: 0 Search time: 2 ms.
+Num nodes: 873 num cutoffs: 153
+
+Depth: 5
+
+Pure MiniMax
+
+Best move: col 3 Eval: 32 Search time: 45 ms.
+Num nodes: 19607 num cutoffs: 0
+
+Alpha-beta
+
+Best move: col 3 Eval: 32 Search time: 7 ms.
+Num nodes: 2783 num cutoffs: 409
+
+Depth: 6
+
+Pure MiniMax
+
+Best move: col 4 Eval: 0 Search time: 227 ms.
+Num nodes: 137256 num cutoffs: 0
+
+Alpha-beta
+
+Best move: col 4 Eval: 0 Search time: 22 ms.
+Num nodes: 15565 num cutoffs: 2868
+
+Depth: 7
+
+Pure MiniMax
+
+Best move: col 4 Eval: 46 Search time: 1572 ms.
+Num nodes: 910824 num cutoffs: 0
+
+Alpha-beta
+
+Best move: col 4 Eval: 46 Search time: 85 ms.
+Num nodes: 62058 num cutoffs: 10570
+
+Depth: 8
+
+Pure MiniMax
+
+Best move: col 4 Eval: -10 Search time: 12692 ms.
+Num nodes: 6159186 num cutoffs: 0
+
+Alpha-beta
+
+Best move: col 4 Eval: -10 Search time: 586 ms.
+Num nodes: 234167 num cutoffs: 46182
+

@@ -30,3 +30,11 @@ if(WIN32)
         "$<TARGET_FILE:connectFour>"
     )
 endif()
+
+add_executable(benchmark
+    src/benchmark.cpp
+    src/board.cpp
+    src/ai.cpp
+)
+
+target_include_directories(benchmark PRIVATE include)

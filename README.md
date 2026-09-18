@@ -18,6 +18,13 @@ cmake -B build -G "MinGW Makefiles" -DCMAKE_PREFIX_PATH="C:/Qt/6.11.2/mingw_64"
 cmake --build build
 ```
 
+### Test
+
+```
+
+.\build\benchmark.exe
+```
+
 ### Run
 
 ```
