@@ -21,7 +21,6 @@ cmake --build build
 ### Test
 
 ```
-
 .\build\benchmark.exe
 ```
 
